@@ -11,13 +11,12 @@ export class Schedule {
     date: Date
 
     @Column({ type: "time" })
-    hour: number
+    hour: string
 
     @ManyToOne(() => RealEstate, realEstate => realEstate.schedule)
     @JoinColumn({ name: "realEstateId" })
     realEstate: RealEstate
 
     @ManyToOne(() => User, user => user.schedules)
-    @JoinColumn({ name: "userId" })
     user: User
 }

@@ -1,6 +1,6 @@
-import { BeforeInsert, Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Schedule } from "./schedules.entity";
-import * as bcrypt from "bcrypt";
+import * as bcryptjs from "bcryptjs";
 
 @Entity("users")
 export class User {
@@ -19,20 +19,24 @@ export class User {
     @Column({ length: 120 })
     password: string
 
-    @Column({ type: "date" })
-    createAt: Date
+    @CreateDateColumn({ type: "date" })
+    createdAt: Date | string
 
-    @Column({ type: "date" })
-    updateAt: Date
+    @UpdateDateColumn({ type: "date" })
+    updatedAt: Date | string
 
-    @Column({ type: "date", nullable: true })
-    deleteAt: Date
+    @DeleteDateColumn({ type: "date", nullable: true })
+    deletedAt: Date | string | undefined | null
 
     @OneToMany(() => Schedule, schedule => schedule.user)
     schedules: Schedule[]
 
     @BeforeInsert()
-    async hashPasswordBeforeInsert() {
-        this.password = await bcrypt.hash(this.password, 10)
+    @BeforeUpdate()
+    hashPassword() {
+        const hash: number = bcryptjs.getRounds(this.password)
+        if (!hash) {
+            this.password =  bcryptjs.hashSync(this.password, 10)
+        } 
     }
 }
