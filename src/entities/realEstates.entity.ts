@@ -1,7 +1,8 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Schedule } from "./schedules.entity";
 import { Address } from "./addresses.entity";
 import { Category } from "./categories.entity";
+import { type } from "os";
 
 @Entity("realEstates")
 export class RealEstate {
@@ -14,14 +15,14 @@ export class RealEstate {
     @Column({ type: "decimal", precision: 12, scale: 2 })
     value: number | string
 
-    @Column()
+    @Column({ type: "integer" })
     size: number
 
-    @Column()
-    createAt: Date
+    @CreateDateColumn()
+    createdAt: Date | string
 
-    @Column()
-    update: Date
+    @UpdateDateColumn()
+    updatedAt: Date | string
     
     @OneToMany(() => RealEstate, realEstate => realEstate.schedule)
     schedule: Schedule[]

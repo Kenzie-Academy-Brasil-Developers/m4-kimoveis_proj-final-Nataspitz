@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "../../entities";
-import { createNewUser, listUsers, userLogin, updateUser } from "../../services";
+import { createNewUser, listUsers, userLogin, updateUser, deleteSoftUser } from "../../services";
 import { userRuturn } from "../../interfaces/users/users.interfaces";
 
 export const createUserController = async (req: Request, res: Response): Promise<Response> =>{
@@ -18,13 +18,13 @@ export const listUserController = async (req: Request, res: Response): Promise<R
 }
 
 export const updateUserController = async (req: Request, res: Response): Promise<Response> =>{
-    const { user } = res.locals
-    const update = await updateUser(user, req.body)
+    const { sub } = res.locals.decoded
+    const update = await updateUser(sub, req.body)
     return res.status(200).json(update)
 }
 
 export const deleteUserController = async (req: Request, res: Response): Promise<Response> =>{
     const { user } = res.locals
-    
+    await deleteSoftUser(user)
     return res.status(204).send()
 }

@@ -39,6 +39,18 @@ export const listUsers = async () =>{
     return userReadSchema.parse( await userRepo.find())
 }
 
-export const updateUser = async (user: User, payload: userUpdate): Promise<User> =>{
-    return await userRepo.save({ ...user, ...payload })
+export const updateUser = async (idUser: string, payload: userUpdate) =>{
+    console.log(idUser, payload)
+    const id: number = Number(idUser)
+    
+    const userFound: User | null = await userRepo.findOneBy({ id })
+    const userUpdate: User = userRepo.create({ ...userFound, ...payload })
+    const currentUser = await userRepo.save(userUpdate)
+
+    const newUpdateUser = responseUserSchema.parse(currentUser)
+    return newUpdateUser
+}
+
+export const deleteSoftUser = async (user: User): Promise<void> =>{
+    await userRepo.softRemove(user)
 }

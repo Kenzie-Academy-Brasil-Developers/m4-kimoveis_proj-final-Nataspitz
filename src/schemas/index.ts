@@ -1,3 +1,5 @@
+import { categorySchema, newCategorySchema } from "./category/category.schema";
+import { newRealEstateSchema, realEstateSchema } from "./realEstates/realEstates.schema";
 import {
   createUserSchema,
   responseUserSchema,
@@ -7,11 +9,16 @@ import {
   updateUserSchema
 } from "./users/users.schema";
 
+
 export {
   userSchema,
   createUserSchema,
   responseUserSchema,
   userLoginSchema,
   userReadSchema,
-  updateUserSchema
+  updateUserSchema,
+  categorySchema,
+  newCategorySchema,
+  realEstateSchema,
+  newRealEstateSchema
 };

@@ -4,7 +4,7 @@ import { userRepo } from "../../repositories";
 import { AppError } from "../../errors/AppError";
 
 export const verifyIdExists = async (req: Request, res: Response, next: NextFunction): Promise<void> =>{
-    const { id } = req.body
+    const id = Number(req.params.id)
 
     const idExists: User | null = await userRepo.findOneBy({ id })
 

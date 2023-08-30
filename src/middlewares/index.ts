@@ -1,7 +1,17 @@
+import { compareId } from "./authentication/compareId.middleware";
 import { validateBody } from "./authentication/validateBody.middleware";
 import { verifyPermission } from "./authentication/verifyPermission.middleware";
 import { verifyToken } from "./authentication/verifyToken.middware";
+import { validateName } from "./category/validateName.middleware";
 import { validateEmail } from "./users/validateEmail.middleare";
 import { verifyIdExists } from "./users/verifyId.middleware";
 
-export { validateBody, validateEmail, verifyIdExists, verifyToken, verifyPermission }
+export {
+  validateBody,
+  validateEmail,
+  verifyIdExists,
+  verifyToken,
+  verifyPermission,
+  compareId,
+  validateName
+};
