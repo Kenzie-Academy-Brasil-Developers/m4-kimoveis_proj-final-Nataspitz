@@ -12,26 +12,25 @@ export class RealEstate {
     @Column({ type: "boolean", default: false })
     sold: boolean
 
-    @Column({ type: "decimal", precision: 12, scale: 2 })
+    @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
     value: number | string
 
     @Column({ type: "integer" })
     size: number
 
-    @CreateDateColumn()
-    createdAt: Date | string
+    @CreateDateColumn({ type: "date" })
+    createdAt: string
 
-    @UpdateDateColumn()
-    updatedAt: Date | string
+    @UpdateDateColumn({ type: "date" })
+    updatedAt: string
     
     @OneToMany(() => RealEstate, realEstate => realEstate.schedule)
     schedule: Schedule[]
 
     @OneToOne(() => Address, address => address.realEstate)
-    @JoinColumn({ name: "addressId" })
+    @JoinColumn()
     address: Address
 
-    @ManyToOne(() => Category, category => category.realEstates) 
-    @JoinColumn({ name: "categoryId" })
+    @ManyToOne(() => Category, category => category.realEstate) 
     category: Category
 }

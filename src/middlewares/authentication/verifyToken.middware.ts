@@ -12,6 +12,7 @@ export const verifyToken =  (req: Request, res: Response, next: NextFunction): v
 
     const decoded: string | JwtPayload = verify(token, process.env.SECRET_KEY!)
     res.locals = {...res.locals, decoded}
-
+    console.log(res.locals.decoded);
+    
     return next()
 }

@@ -1,3 +1,4 @@
+import { verifyAddressExists } from "./address/verifyAddressExists.middlewarets";
 import { compareId } from "./authentication/compareId.middleware";
 import { validateBody } from "./authentication/validateBody.middleware";
 import { verifyPermission } from "./authentication/verifyPermission.middleware";
@@ -13,5 +14,6 @@ export {
   verifyToken,
   verifyPermission,
   compareId,
-  validateName
+  validateName,
+  verifyAddressExists
 };

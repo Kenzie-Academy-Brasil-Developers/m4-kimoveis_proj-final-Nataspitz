@@ -9,7 +9,7 @@ export const handleErrors  = (err: unknown, req: Request, res: Response, next: N
     }
 
     if (err instanceof z.ZodError) {
-        return res.status(400).json({ message: err.flatten().fieldErrors});
+        return res.status(400).json({ message: err.errors});
     }
 
     if (err instanceof JsonWebTokenError) {
