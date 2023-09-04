@@ -1,4 +1,4 @@
-import { createCategoryController, listAllCategoriesController } from "./category/category.services";
+import { createCategoryController, listAllCategoriesController, listRealEstatesByCategoriesController } from "./category/category.services";
 import { createNewRealEstateController, listAllRealEstatesController } from "./realEstate/realEstate.services";
 import {
   createUserController,
@@ -17,5 +17,6 @@ export {
   createCategoryController,
   listAllCategoriesController,
   createNewRealEstateController,
-  listAllRealEstatesController
+  listAllRealEstatesController,
+  listRealEstatesByCategoriesController
 };

@@ -20,5 +20,9 @@ export const createNewRealEstate = async (payload: newRealEstate) =>{
 }
 
 export const listAllRealEstates = async (): Promise<RealEstate[]> =>{
-    return await realEstateRepo.find()
+    return await realEstateRepo.find({
+        relations: {
+            address: true
+        }
+    })
 }

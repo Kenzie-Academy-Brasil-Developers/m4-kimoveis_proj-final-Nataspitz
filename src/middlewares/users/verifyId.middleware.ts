@@ -6,13 +6,12 @@ import { AppError } from "../../errors/AppError";
 export const verifyIdExists = async (req: Request, res: Response, next: NextFunction): Promise<void> =>{
     const id = Number(req.params.id)
 
-    const idExists: User | null = await userRepo.findOneBy({ id })
+    const user: User | null = await userRepo.findOneBy({ id })
 
-    if (!idExists) {
+    if (!user) {
         throw new AppError("User not found", 404)
     }
-
-    const user = res.locals.user
+    
     res.locals = {...res.locals, user}
 
     return next()

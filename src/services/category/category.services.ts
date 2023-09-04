@@ -1,6 +1,7 @@
-import { Category } from "../../entities"
+import { Request, Response } from "express"
+import { Category, RealEstate } from "../../entities"
 import { newCategory } from "../../interfaces"
-import { categoryRepo } from "../../repositories"
+import { categoryRepo, realEstateRepo } from "../../repositories"
 
 export const createNewCategory = async (payload: newCategory ): Promise<Category> =>{
     const newCategory: Category = categoryRepo.create(payload)
@@ -9,6 +10,23 @@ export const createNewCategory = async (payload: newCategory ): Promise<Category
     return newCategory
 }
 
-export const listAllCategories = async (): Promise<Category[]> =>{
-    return await categoryRepo.find()
+export const listAllCategories = async (id: number): Promise<Category[]> =>{
+const categories = await categoryRepo.find()
+
+return categories
+
 }
+
+export const listRealEstatesByCategory = async (id: number): Promise<any> =>{
+
+    const realEstates = await categoryRepo.findOne({
+        where:  { id: id },
+        relations: {
+            realEstate: true
+        }
+    })
+    
+    
+    return realEstates
+    
+    }

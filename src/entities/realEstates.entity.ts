@@ -32,5 +32,6 @@ export class RealEstate {
     address: Address
 
     @ManyToOne(() => Category, category => category.realEstate) 
+    @JoinColumn({ name: "categoryId" })
     category: Category
 }

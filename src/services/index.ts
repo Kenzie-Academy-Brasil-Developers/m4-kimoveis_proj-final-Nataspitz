@@ -1,6 +1,7 @@
 import {
   createNewCategory,
   listAllCategories,
+  listRealEstatesByCategory,
 } from "./category/category.services";
 import { createNewRealEstate, listAllRealEstates } from "./realEstate/realEstate.services";
 import {
@@ -10,6 +11,7 @@ import {
   updateUser,
   deleteSoftUser,
 } from "./users/users.services";
+
 export {
   createNewUser,
   listUsers,
@@ -19,5 +21,6 @@ export {
   createNewCategory,
   listAllCategories,
   createNewRealEstate,
-  listAllRealEstates
+  listAllRealEstates,
+  listRealEstatesByCategory
 };
