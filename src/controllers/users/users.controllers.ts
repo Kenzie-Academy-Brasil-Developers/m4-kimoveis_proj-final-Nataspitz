@@ -25,7 +25,6 @@ export const updateUserController = async (req: Request, res: Response): Promise
 
 export const deleteUserController = async (req: Request, res: Response): Promise<Response> =>{
     const { user } = res.locals
-    console.log(user);
     
     await deleteSoftUser(user)
     return res.status(204).send()

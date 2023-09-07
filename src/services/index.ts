@@ -4,6 +4,7 @@ import {
   listRealEstatesByCategory,
 } from "./category/category.services";
 import { createNewRealEstate, listAllRealEstates } from "./realEstate/realEstate.services";
+import { createSchedule, listSchedulesByRealEstate } from "./schedules/schedules.services";
 import {
   createNewUser,
   listUsers,
@@ -22,5 +23,7 @@ export {
   listAllCategories,
   createNewRealEstate,
   listAllRealEstates,
-  listRealEstatesByCategory
+  listRealEstatesByCategory,
+  createSchedule,
+  listSchedulesByRealEstate
 };

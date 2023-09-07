@@ -17,10 +17,10 @@ return categories
 
 }
 
-export const listRealEstatesByCategory = async (id: number): Promise<any> =>{
+export const listRealEstatesByCategory = async (idCategory: number): Promise<any> =>{
 
     const realEstates = await categoryRepo.findOne({
-        where:  { id: id },
+        where:  { id: idCategory },
         relations: {
             realEstate: true
         }

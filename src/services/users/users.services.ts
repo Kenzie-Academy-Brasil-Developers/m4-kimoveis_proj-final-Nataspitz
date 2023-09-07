@@ -35,12 +35,12 @@ export const userLogin = async (payload: loginUser): Promise<token> =>{
     return { token }
 }
 
-export const listUsers = async () =>{
+export const listUsers = async (): Promise<userRuturn[]> =>{
     return userReadSchema.parse( await userRepo.find())
 }
 
-export const updateUser = async (idUser: string, payload: userUpdate) =>{
-    console.log(idUser, payload)
+export const updateUser = async (idUser: string, payload: userUpdate): Promise<userUpdate> =>{
+
     const id: number = Number(idUser)
     
     const userFound: User | null = await userRepo.findOneBy({ id })

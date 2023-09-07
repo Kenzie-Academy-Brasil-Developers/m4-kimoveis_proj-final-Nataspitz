@@ -1,5 +1,13 @@
-import { createCategoryController, listAllCategoriesController, listRealEstatesByCategoriesController } from "./category/category.services";
-import { createNewRealEstateController, listAllRealEstatesController } from "./realEstate/realEstate.services";
+import {
+  createCategoryController,
+  listAllCategoriesController,
+  listRealEstatesByCategoriesController,
+} from "./category/category.services";
+import {
+  createNewRealEstateController,
+  listAllRealEstatesController,
+} from "./realEstate/realEstate.services";
+import { createScheduleController, listSchedulesController } from "./schedule/schedule.controllers";
 import {
   createUserController,
   listUserController,
@@ -18,5 +26,7 @@ export {
   listAllCategoriesController,
   createNewRealEstateController,
   listAllRealEstatesController,
-  listRealEstatesByCategoriesController
+  listRealEstatesByCategoriesController,
+  createScheduleController,
+  listSchedulesController
 };
