@@ -23,7 +23,7 @@ export class RealEstate {
     @UpdateDateColumn({ type: "date" })
     updatedAt: string
     
-    @OneToMany(() => RealEstate, realEstate => realEstate.schedules)
+    @OneToMany(() => Schedule, schedule => schedule.realEstate)
     schedules: Schedule[]
 
     @OneToOne(() => Address, address => address.realEstate)

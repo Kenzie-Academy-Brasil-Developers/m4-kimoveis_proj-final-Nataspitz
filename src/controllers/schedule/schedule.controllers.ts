@@ -12,6 +12,5 @@ export const createScheduleController = async (req: Request, res: Response): Pro
 
 export const listSchedulesController = async (req: Request, res: Response): Promise<Response> =>{
     const id = Number(req.params.id)
-
     return res.status(200).json(await listSchedulesByRealEstate(id))
 }

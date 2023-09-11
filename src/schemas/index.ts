@@ -1,7 +1,7 @@
 import { addressSchema, newAddressSchema } from "./address/address.schema";
 import { categorySchema, newCategorySchema } from "./category/category.schema";
 import { newRealEstateSchema, realEstateSchema } from "./realEstates/realEstates.schema";
-import { newScheduleSchema, scheduleSchema } from "./schedule/schedule.schema";
+import { newScheduleSchema, scheduleSchema, schedulesValidateSchema } from "./schedule/schedule.schema";
 import {
   createUserSchema,
   responseUserSchema,
@@ -26,4 +26,5 @@ export {
   newAddressSchema,
   scheduleSchema,
   newScheduleSchema,
+  schedulesValidateSchema
 };
