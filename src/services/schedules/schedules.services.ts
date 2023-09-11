@@ -4,7 +4,7 @@ import { newSchedule } from "../../interfaces";
 import { realEstateRepo, scheduleRepo } from "../../repositories";
 
 
-export const createSchedule = async (payload: newSchedule): Promise<void> =>{
+export const createSchedule = async (payload: newSchedule, userId: number): Promise<void> =>{
     const business = new Date(payload.date + " " + payload.hour);
     const businessHour = business.getHours()
     const businessDate = business.getDay()
@@ -17,16 +17,16 @@ export const createSchedule = async (payload: newSchedule): Promise<void> =>{
         throw new AppError("Invalid hour, available times are 8AM to 18PM")
     }
 
-    const newSchedule: Schedule = scheduleRepo.create(payload)
+    const newSchedule: Schedule = scheduleRepo.create({ user: { id: userId }, realEstate: { id: payload.realEstateId }, ...payload })
     await scheduleRepo.save(newSchedule)
 }
 
-export const listSchedulesByRealEstate = async (realEstateId: number): Promise<any[]> =>{
+export const listSchedulesByRealEstate = async (realEstateId: number): Promise<any> =>{
 
-    const schedules = await realEstateRepo.find({
+    const schedules = await realEstateRepo.findOne({
         where: { id: realEstateId  },
-        relations: { schedule: { user: true }  }
-      })
+        relations: { schedules: { user: true }, address: true,  category: true }
+    })
 
     return schedules
 }

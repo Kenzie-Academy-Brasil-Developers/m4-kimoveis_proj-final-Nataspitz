@@ -2,7 +2,6 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, One
 import { Schedule } from "./schedules.entity";
 import { Address } from "./addresses.entity";
 import { Category } from "./categories.entity";
-import { type } from "os";
 
 @Entity("realEstates")
 export class RealEstate {
@@ -24,14 +23,13 @@ export class RealEstate {
     @UpdateDateColumn({ type: "date" })
     updatedAt: string
     
-    @OneToMany(() => RealEstate, realEstate => realEstate.schedule)
-    schedule: Schedule[]
+    @OneToMany(() => RealEstate, realEstate => realEstate.schedules)
+    schedules: Schedule[]
 
     @OneToOne(() => Address, address => address.realEstate)
     @JoinColumn()
     address: Address
 
     @ManyToOne(() => Category, category => category.realEstate) 
-    @JoinColumn({ name: "categoryId" })
     category: Category
 }

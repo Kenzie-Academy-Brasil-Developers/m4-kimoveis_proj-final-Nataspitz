@@ -1,4 +1,4 @@
-import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Schedule } from "./schedules.entity";
 import * as bcryptjs from "bcryptjs";
 
@@ -20,13 +20,13 @@ export class User {
     password: string
 
     @CreateDateColumn({ type: "date" })
-    createdAt: Date | string
+    createdAt: string
 
     @UpdateDateColumn({ type: "date" })
-    updatedAt: Date | string
+    updatedAt:  string
 
     @DeleteDateColumn({ type: "date", nullable: true })
-    deletedAt: Date | string | undefined | null
+    deletedAt:  string | null
 
     @OneToMany(() => Schedule, schedule => schedule.user)
     schedules: Schedule[]

@@ -6,7 +6,7 @@ export const createScheduleController = async (req: Request, res: Response): Pro
     const { body } = req
     const { sub } = res.locals.decoded
 
-    await createSchedule({sub, ...body })
+    await createSchedule( body, sub )
     return res.status(201).json({ message: "Schedule created" })
 }
 

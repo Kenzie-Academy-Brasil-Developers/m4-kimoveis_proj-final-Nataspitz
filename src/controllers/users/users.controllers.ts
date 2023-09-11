@@ -18,8 +18,8 @@ export const listUserController = async (req: Request, res: Response): Promise<R
 }
 
 export const updateUserController = async (req: Request, res: Response): Promise<Response> =>{
-    const { sub } = res.locals.decoded
-    const update = await updateUser(sub, req.body)
+    const { user } = res.locals
+    const update = await updateUser(user, req.body)
     return res.status(200).json(update)
 }
 

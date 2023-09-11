@@ -9,12 +9,7 @@ export const scheduleSchema = z.object({
 })
 
 export const newScheduleSchema = z.object({
-    id: z.number().positive(),
+    realEstateId: z.number().positive(),
     date: z.string(),
     hour: z.string(),
 })
-
-export const schedulesValidateSchema = newScheduleSchema.omit({ id: true }).extend({
-    realEstateId: z.number(),
-
-});

@@ -39,12 +39,9 @@ export const listUsers = async (): Promise<userRuturn[]> =>{
     return userReadSchema.parse( await userRepo.find())
 }
 
-export const updateUser = async (idUser: string, payload: userUpdate): Promise<userUpdate> =>{
-
-    const id: number = Number(idUser)
+export const updateUser = async (user: User, payload: userUpdate): Promise<userUpdate> =>{
     
-    const userFound: User | null = await userRepo.findOneBy({ id })
-    const userUpdate: User = userRepo.create({ ...userFound, ...payload })
+    const userUpdate: User = userRepo.create({ ...user, ...payload })
     const currentUser = await userRepo.save(userUpdate)
 
     const newUpdateUser = responseUserSchema.parse(currentUser)
